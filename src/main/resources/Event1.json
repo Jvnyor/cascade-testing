@@ -1,0 +1,18 @@
+{
+  "eventId": "ABC1",
+  "name": "Test",
+  "section": {
+    "name": "Test",
+    "subSections": [
+      {
+        "name": "A"
+      },
+      {
+        "name": "B"
+      },
+      {
+        "name": "C"
+      }
+    ]
+  }
+}
