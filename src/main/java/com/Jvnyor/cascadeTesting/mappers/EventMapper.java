@@ -23,6 +23,12 @@ public class EventMapper {
         return event;
     }
 
+    public static Event updateEventFromDto(Event existingEvent, EventDto dto) {
+        existingEvent.setName(dto.getName());
+        existingEvent.setSection(createSectionFromDto(dto.getSection()));
+        return existingEvent;
+    }
+
     private static Section createSectionFromDto(SectionDto dto) {
         var section = new Section();
         section.setName(dto.getName());
@@ -36,19 +42,5 @@ public class EventMapper {
             subSection.setName(dto.getName());
             return subSection;
         }).collect(Collectors.toCollection(LinkedHashSet::new));
-    }
-
-    public static Event updateEventFromDto(Event existingEvent, EventDto dto) {
-        existingEvent.setEventId(dto.getEventId());
-        existingEvent.setName(dto.getName());
-        existingEvent.setSection(updateSectionFromDto(existingEvent.getSection(), dto.getSection()));
-        return existingEvent;
-    }
-
-    private static Section updateSectionFromDto(Section existingSection, SectionDto dto) {
-        existingSection.setName(dto.getName());
-        existingSection.getSubSections().clear();
-        existingSection.addSubSections(createSubSectionsFromDto(dto.getSubSections()));
-        return existingSection;
     }
 }

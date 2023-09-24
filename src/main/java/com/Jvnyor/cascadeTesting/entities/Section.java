@@ -20,7 +20,7 @@ public class Section {
     private Long id;
     private String name;
     @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "section_id", nullable = false)
     private Set<SubSection> subSections = new LinkedHashSet<>();
 

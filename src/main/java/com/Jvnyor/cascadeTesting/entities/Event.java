@@ -19,7 +19,7 @@ public class Event {
     private String eventId;
     private String name;
     @ToString.Exclude
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, optional = false)
     @JoinColumn(name = "section_id", nullable = false)
     private Section section;
 

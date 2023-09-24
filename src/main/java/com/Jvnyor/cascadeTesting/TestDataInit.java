@@ -24,7 +24,7 @@ public class TestDataInit implements CommandLineRunner {
         service.create(dto1);
         var dto2 = createEventDto2();
         var optionalEvent = service.findByEventId(dto2.getEventId());
-        optionalEvent.ifPresentOrElse(event -> service.update(event, dto2), () -> service.create(dto2));
+        optionalEvent.ifPresentOrElse(existingEvent -> service.update(existingEvent, dto2), () -> service.create(dto2));
     }
 
     private static EventDto createEventDto1() throws Exception {
